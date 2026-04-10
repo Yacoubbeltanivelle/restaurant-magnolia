@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magnolia — Restaurant Méditerranéen & Turc · Sainte-Geneviève-des-Bois</title>
+  <meta name="description" content="Restaurant méditerranéen et turc à Sainte-Geneviève-des-Bois. Cuisine généreuse, grillades, lahmacun, pides et brunch du dimanche. Tenu par Filiz Erat, originaire de Gaziantep.">
+  <meta name="keywords" content="restaurant méditerranéen Sainte-Geneviève-des-Bois, restaurant turc, lahmacun, grillades, brunch dimanche, Essonne">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- JSON-LD Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Magnolia",
+    "description": "Restaurant méditerranéen et turc à Sainte-Geneviève-des-Bois, tenu par Filiz Erat, originaire de Gaziantep.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "29 route de Corbeil",
+      "addressLocality": "Sainte-Geneviève-des-Bois",
+      "postalCode": "91700",
+      "addressCountry": "FR"
+    },
+    "telephone": "+33175306108",
+    "servesCuisine": ["Méditerranéen", "Turc"],
+    "priceRange": "€€",
+    "sameAs": ["https://www.instagram.com/restaurantmagnolia91"],
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday"], "opens": "11:30", "closes": "15:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday"], "opens": "18:00", "closes": "21:30" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "11:30", "closes": "15:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "18:00", "closes": "23:30" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "10:30", "closes": "20:30" }
+    ],
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 48.6477613,
+      "longitude": 2.3360647
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ░░░ LOADER ░░░ -->
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <p class="loader-name">Magnolia</p>
+      <div class="loader-bar"><div class="loader-progress"></div></div>
+    </div>
+  </div>
+
+  <!-- ░░░ CURSOR ░░░ -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursor-follower"></div>
+
+  <!-- ░░░ NAVIGATION ░░░ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Magnolia</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about" class="nav-link">À propos</a></li>
+        <li><a href="#menu" class="nav-link">La carte</a></li>
+        <li><a href="#gallery" class="nav-link">Galerie</a></li>
+        <li><a href="#contact" class="nav-link">Infos pratiques</a></li>
+      </ul>
+      <a href="tel:0175306108" class="nav-cta">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 .11h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Réserver
+      </a>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ░░░ HERO ░░░ -->
+  <section id="hero">
+    <div class="hero-bg">
+      <img
+        src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1920&q=85"
+        alt="Restaurant Magnolia — ambiance chaleureuse"
+        class="hero-img"
+        id="hero-img"
+      >
+      <div class="hero-overlay"></div>
+      <div class="hero-grain"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-eyebrow" id="h-eyebrow">
+        <span>Sainte-Geneviève-des-Bois</span>
+        <span class="hero-dot">·</span>
+        <span>Essonne</span>
+      </div>
+      <h1 class="hero-title" id="h-title">
+        <span class="title-line">Mag</span><span class="title-line italic">no</span><span class="title-line">lia</span>
+      </h1>
+      <p class="hero-tagline" id="h-tagline">
+        Cuisine méditerranéenne &amp; turque<br>
+        <em>grillades, lahmacun, brunch du dimanche</em>
+      </p>
+      <div class="hero-cta" id="h-cta">
+        <a href="tel:0175306108" class="btn btn-light">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 .11h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          01 75 30 61 08
+        </a>
+        <a href="https://maps.google.com/?q=Magnolia+29+route+de+Corbeil+91700+Sainte-Geneviève-des-Bois" target="_blank" rel="noopener" class="btn btn-ghost">
+          Voir l'itinéraire
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint" id="h-scroll">
+      <div class="scroll-line-wrap"><div class="scroll-line"></div></div>
+      <span>Découvrir</span>
+    </div>
+  </section>
+
+  <!-- ░░░ MARQUEE ░░░ -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track" id="marquee-track">
+      <span>Grillades</span><span class="sep">·</span>
+      <span>Lahmacun</span><span class="sep">·</span>
+      <span>Pides</span><span class="sep">·</span>
+      <span>Mezze</span><span class="sep">·</span>
+      <span>Baklava</span><span class="sep">·</span>
+      <span>Künefe</span><span class="sep">·</span>
+      <span>Brunch du dimanche</span><span class="sep">·</span>
+      <span>Gaziantep</span><span class="sep">·</span>
+      <span>Méditerranée</span><span class="sep">·</span>
+      <span>Grillades</span><span class="sep">·</span>
+      <span>Lahmacun</span><span class="sep">·</span>
+      <span>Pides</span><span class="sep">·</span>
+      <span>Mezze</span><span class="sep">·</span>
+      <span>Baklava</span><span class="sep">·</span>
+      <span>Künefe</span><span class="sep">·</span>
+      <span>Brunch du dimanche</span><span class="sep">·</span>
+      <span>Gaziantep</span><span class="sep">·</span>
+      <span>Méditerranée</span><span class="sep">·</span>
+    </div>
+  </div>
+
+  <!-- ░░░ À PROPOS ░░░ -->
+  <section id="about">
+    <div class="about-container">
+      <div class="about-text reveal-block">
+        <span class="section-label">Notre histoire</span>
+        <h2 class="section-title">Une cuisine née<br>à <em>Gaziantep</em></h2>
+        <p class="about-body">Magnolia est né d'une passion. Filiz Erat, originaire de Gaziantep — capitale gastronomique reconnue de la Turquie — a apporté avec elle les saveurs généreuses de sa région, les épices parfumées et les recettes transmises de génération en génération.</p>
+        <p class="about-body">Dans un cadre fleuri et chaleureux au cœur de Sainte-Geneviève-des-Bois, Magnolia vous invite à voyager le temps d'un repas. Pides croustillants, grillades fumantes, mezze généreux, lahmacun fins… et chaque dimanche matin, un brunch aux saveurs orientales.</p>
+        <div class="about-stats">
+          <div class="stat">
+            <span class="stat-num" data-count="100">0</span><span class="stat-unit">%</span>
+            <span class="stat-label">Fait maison</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num" data-count="6">0</span>
+            <span class="stat-label">Jours d'ouverture</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num" data-count="1">0</span>
+            <span class="stat-label">Brunch dominical</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual reveal-block">
+        <div class="about-img-frame">
+          <img
+            src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=85"
+            alt="Intérieur chaleureux du restaurant Magnolia"
+            loading="lazy"
+            class="about-img"
+          >
+        </div>
+        <div class="about-badge-float">
+          <p>Cuisine<br>généreuse</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░ CARTE ░░░ -->
+  <section id="menu">
+    <div class="menu-container">
+      <div class="menu-header reveal-block">
+        <span class="section-label">Nos saveurs</span>
+        <h2 class="section-title">La carte</h2>
+        <p class="menu-subtitle">Des plats préparés avec soin, des produits frais, des recettes authentiques transmises de Gaziantep.</p>
+      </div>
+
+      <div class="menu-tabs-wrap reveal-block">
+        <div class="menu-tabs" role="tablist">
+          <button class="tab active" data-tab="entrees" role="tab">Entrées</button>
+          <button class="tab" data-tab="grillades" role="tab">Grillades</button>
+          <button class="tab" data-tab="pides" role="tab">Pides & Lahmacun</button>
+          <button class="tab" data-tab="plats" role="tab">Plats</button>
+          <button class="tab" data-tab="desserts" role="tab">Desserts</button>
+          <button class="tab" data-tab="brunch" role="tab">
+            Brunch
+            <span class="tab-badge">Dim.</span>
+          </button>
+        </div>
+        <div class="tab-indicator"></div>
+      </div>
+
+      <div class="menu-panels">
+
+        <!-- Entrées -->
+        <div class="panel active" id="panel-entrees" role="tabpanel">
+          <div class="menu-grid">
+            <div class="dish">
+              <div class="dish-info">
+                <h3>Feuilles de vigne farcies</h3>
+                <p>Riz parfumé, herbes fraîches, cumin, citron</p>
+              </div>
+              <span class="dish-price">8 €</span>
+            </div>
+            <div class="dish">
+              <div class="dish-info">
+                <h3>Mezze maison</h3>
+                <p>Houmous, caviar d'aubergine, tzatziki, pain pita doré</p>
+              </div>
+              <span class="dish-price">12 €</span>
+            </div>
+            <div class="dish">
+              <div class="dish-info">
+                <h3>Soupe de lentilles rouges</h3>
+                <p>Cumin, coriandre, citron, crème fraîche</p>
+              </div>
+              <span class="dish-price">7 €</span>
+            </div>
+            <div class="dish featured">
+              <div class="dish-info">
+                <h3>Börek au fromage <span class="dish-tag">Coup de cœur</span></h3>
+                <p>Feuilleté croustillant à la feta et au persil frais</p>
+              </div>
+              <span class="dish-price">8 €</span>
+            </div>
+            <div class="dish">
+              <div class="dish-info">
+                <h3>Salade Çoban</h3>
+                <p>Tomates, concombre, oignons, poivrons, persil, vinaigrette</p>
+              </div>
+              <span class="dish-price">9 €</span>
+            </div>
+            <div class="dish">
+              <div class="dish-info">
+                <h3>Assiette de mezze chauds</h3>
+                <p>Börek, falafel, halloumi grillé, sauce tomate épicée</p>
+              </div>
+              <span class="dish-price">14 €</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grillades -->
+        <div class="panel" id="panel-grillades" role="tabpanel">
+          <div class="menu-grid">
+            <div class="dish featured">
+              <div class="dish-info">
+                <h3>Assiette mixte <span class="dish-tag">Signature</span></h3>
+                <p>Adana, Urfa, poulet mariné, agneau, riz pilaf, salade</p>
+              </div>
+              <span class="dish-price">22 €</span>
+            </div>
+            <div class="dish">
+              <div class="dish-info">
+                <h3>Adana kebab</h3>
+                <p>Viande hachée épicée grillée, pain maison, salade</p>
+              </div>
+              <span class="dish-price">16 €</span>
+            </div>
+            <div class="dish">
+              <div class="dish-info">
+                <h3>Poulet mariné grillé</h3>
+                <p>Marinade aux épices douces, citron, herbes fraîches</p>
+              </div>
+              <span class="dish-price">15 €</span>
+            </div>
+            <div class="dish">
+              <div class="dish-info">
+                <h3>Şiş kebab d'agneau</h3>
+                <p>Brochettes d'agneau fondant, légumes grillés, riz</p>
+              </div>
+              <span class="dish-price">18 €</span>
+            </div>
+            <div class="dish">
+              <div class="dish-info">
+                <h3>Côtelettes d'agneau</h3>
+                <p>Grillées à la flamme, sauce au yaourt à l'ail, sumac</p>
+              </div>
+              <span class="dish-price">20 €</span>
+            </div>
+            <div class="dish">
+              <div class="dish-info">
+                <h3>Grill végétarien</h3>
+                <p>Aubergines, poivrons, courgettes, halloumi, herbes</p>
+              </div>
+              <span class="dish-price">14 €</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pides & Lahmacun -->
+        <div class="panel" id="panel-pides" role="tabpanel">
+          <div class="menu-grid">
+            <div class="dish featured">
+              <div class="dish-info">
+                <h3>Lahmacun <span class="dish-tag">Incontournable</span></h3>
+                <p>Pizza turque ultra-fine à la viande épicée, citron, persil frais</p>
+              </div>
+              <span class="dish-price">9 €</span>
+            </div>
+            <div class="dish">
+              <div class="dish-info">
+                <h3>Pide à la viande</h3>
+                <p>Barque de pain, viande hachée, poivrons, épices Gaziantep</p>
+              </div>
+              <span class="dish-price">13 €</span>
+            </div>
+            <div class="dish">
+              <div class="dish-info">
+                <h3>Pide au fromage</h3>
+                <p>Kaşar fondu, herbes fraîches, beurre doré</p>
+              </div>
+              <span class="dish-price">11 €</span>
+            </div>
+            <div class="dish">
+              <div class="dish-info">
+                <h3>Pide mixte</h3>
+                <p>Viande, fromage kaşar, œuf cassé, tomate fraîche</p>
+              </div>
+              <span class="dish-price">14 €</span>
+            </div>
+            <div class="dish">
+              <div class="dish-info">
+                <h3>Lahmacun végétarien</h3>
+                <p>Poivrons, tomates, oignons, épices douces, citron</p>
+              </div>
+              <span class="dish-price">8 €</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Plats -->
+        <div class="panel" id="panel-plats" role="tabpanel">
+          <div class="menu-grid">
+            <div class="dish featured">
+              <div class="dish-info">
+                <h3>Güveç maison <span class="dish-tag">Spécialité</span></h3>
+                <p>Ragoût d'agneau en cocotte, légumes de saison, épices d'Orient</p>
+              </div>
+              <span class="dish-price">18 €</span>
+            </div>
+            <div class="dish">
+              <div class="dish-info">
+                <h3>İskender kebab</h3>
+                <p>Viande tranchée sur pain, sauce tomate, yaourt, beurre clarifié</p>
+              </div>
+              <span class="dish-price">17 €</span>
+            </div>
+            <div class="dish">
+              <div class="dish-info">
+                <h3>Moussaka maison</h3>
+                <p>Aubergines fondantes, viande, béchamel, gratinée au four</p>
+              </div>
+              <span class="dish-price">16 €</span>
+            </div>
+            <div class="dish">
+              <div class="dish-info">
+                <h3>Manti (ravioles turques)</h3>
+                <p>Petites ravioles à l'agneau, yaourt à l'ail, huile pimentée</p>
+              </div>
+              <span class="dish-price">15 €</span>
+            </div>
+            <div class="dish">
+              <div class="dish-info">
+                <h3>İmam bayıldı</h3>
+                <p>Aubergine farcie à l'oignon, tomate, persil — plat végétarien</p>
+              </div>
+              <span class="dish-price">14 €</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desserts -->
+        <div class="panel" id="panel-desserts" role="tabpanel">
+          <div class="menu-grid">
+            <div class="dish featured">
+              <div class="dish-info">
+                <h3>Baklava maison <span class="dish-tag">Gaziantep</span></h3>
+                <p>Feuilletés aux pistaches de Gaziantep, sirop de fleur d'oranger</p>
+              </div>
+              <span class="dish-price">7 €</span>
+            </div>
+            <div class="dish featured">
+              <div class="dish-info">
+                <h3>Künefe <span class="dish-tag">Spécialité</span></h3>
+                <p>Kadayıf chaud, fromage fondu, sirop doré, pistaches concassées</p>
+              </div>
+              <span class="dish-price">9 €</span>
+            </div>
+            <div class="dish">
+              <div class="dish-info">
+                <h3>Crème de semoule</h3>
+                <p>Semoule fine, eau de rose, noix, miel d'acacia</p>
+              </div>
+              <span class="dish-price">6 €</span>
+            </div>
+            <div class="dish">
+              <div class="dish-info">
+                <h3>Sorbets agrumes & menthe</h3>
+                <p>Citron, orange sanguine, menthe fraîche</p>
+              </div>
+              <span class="dish-price">5 €</span>
+            </div>
+            <div class="dish">
+              <div class="dish-info">
+                <h3>Thé turc ou café turc</h3>
+                <p>Servi avec une douceur orientale de saison</p>
+              </div>
+              <span class="dish-price">3 €</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Brunch -->
+        <div class="panel" id="panel-brunch" role="tabpanel">
+          <div class="brunch-header">
+            <div class="brunch-timing">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span>Dimanche · 10h30 — 14h30</span>
+            </div>
+            <p>Chaque dimanche matin, Magnolia vous propose un brunch généreux aux accents orientaux : mezzés du matin, pains chauds sortis du four, fromages, douceurs maison et boissons chaudes à volonté.</p>
+            <p class="brunch-note">Réservation conseillée — <a href="tel:0175306108">01 75 30 61 08</a></p>
+          </div>
+          <div class="menu-grid">
+            <div class="dish">
+              <div class="dish-info">
+                <h3>Brunch Oriental</h3>
+                <p>Fromages turcs, olives, labneh, œufs brouillés, sucuk grillé, pain maison, thé ou café</p>
+              </div>
+              <span class="dish-price">19 €</span>
+            </div>
+            <div class="dish featured">
+              <div class="dish-info">
+                <h3>Brunch Magnolia <span class="dish-tag">Le plus complet</span></h3>
+                <p>Tout le brunch oriental + börek chaud, baklava, jus de fruits frais, boisson chaude à volonté</p>
+              </div>
+              <span class="dish-price">26 €</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="menu-footer-note">* Carte indicative — à confirmer avec le restaurant. Prix susceptibles de varier selon la saison.</p>
+    </div>
+  </section>
+
+  <!-- ░░░ CITATION ░░░ -->
+  <section class="quote-section">
+    <div class="quote-bg">
+      <img
+        src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1920&q=80"
+        alt=""
+        loading="lazy"
+        id="quote-img"
+      >
+      <div class="quote-overlay"></div>
+    </div>
+    <blockquote class="quote-text reveal-block">
+      <p>"Une cuisine généreuse, des saveurs<br>qui voyagent,<br>un accueil qui fait revenir."</p>
+      <cite>— Magnolia, Sainte-Geneviève-des-Bois</cite>
+    </blockquote>
+  </section>
+
+  <!-- ░░░ GALERIE ░░░ -->
+  <section id="gallery">
+    <div class="gallery-header reveal-block">
+      <span class="section-label">En images</span>
+      <h2 class="section-title">La galerie</h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item" data-index="0">
+        <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=600&q=80" alt="Plats méditerranéens" loading="lazy">
+        <div class="gallery-caption">Assiette méditerranéenne</div>
+        <div class="gallery-hover"><span>+</span></div>
+      </div>
+      <div class="gallery-item tall" data-index="1">
+        <img src="https://images.unsplash.com/photo-1530469912745-a215c6b256ea?auto=format&fit=crop&w=600&q=80" alt="Baklava aux pistaches" loading="lazy">
+        <div class="gallery-caption">Baklava maison</div>
+        <div class="gallery-hover"><span>+</span></div>
+      </div>
+      <div class="gallery-item" data-index="2">
+        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Grillades" loading="lazy">
+        <div class="gallery-caption">Grillades du chef</div>
+        <div class="gallery-hover"><span>+</span></div>
+      </div>
+      <div class="gallery-item wide" data-index="3">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80" alt="Salle du restaurant" loading="lazy">
+        <div class="gallery-caption">Notre salle</div>
+        <div class="gallery-hover"><span>+</span></div>
+      </div>
+      <div class="gallery-item" data-index="4">
+        <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=600&q=80" alt="Mezze orientaux" loading="lazy">
+        <div class="gallery-caption">Mezze maison</div>
+        <div class="gallery-hover"><span>+</span></div>
+      </div>
+      <div class="gallery-item" data-index="5">
+        <img src="https://images.unsplash.com/photo-1561043433-aaf687c4cf04?auto=format&fit=crop&w=600&q=80" alt="Table dressée" loading="lazy">
+        <div class="gallery-caption">Table du midi</div>
+        <div class="gallery-hover"><span>+</span></div>
+      </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galerie agrandie">
+      <button class="lb-close" id="lb-close" aria-label="Fermer">&times;</button>
+      <button class="lb-prev" id="lb-prev" aria-label="Précédent">&#8592;</button>
+      <button class="lb-next" id="lb-next" aria-label="Suivant">&#8594;</button>
+      <div class="lb-img-wrap">
+        <img class="lb-img" id="lb-img" src="" alt="">
+      </div>
+      <p class="lb-caption" id="lb-caption"></p>
+    </div>
+  </section>
+
+  <!-- ░░░ CONTACT & HORAIRES ░░░ -->
+  <section id="contact">
+    <div class="contact-wrap">
+
+      <div class="hours-col reveal-block">
+        <span class="section-label">Quand nous trouver</span>
+        <h2 class="section-title">Horaires</h2>
+        <div class="hours-list">
+          <div class="hours-row closed">
+            <span class="h-day">Lundi</span>
+            <span class="h-time">Fermé</span>
+          </div>
+          <div class="hours-row">
+            <span class="h-day">Mardi — Jeudi</span>
+            <span class="h-time">11h30–15h00 &amp; 18h00–21h30</span>
+          </div>
+          <div class="hours-row">
+            <span class="h-day">Vendredi</span>
+            <span class="h-time">11h30–15h00 &amp; 18h00–23h30</span>
+          </div>
+          <div class="hours-row">
+            <span class="h-day">Samedi</span>
+            <span class="h-time">11h30–15h00 &amp; 18h00–23h30</span>
+          </div>
+          <div class="hours-row highlight">
+            <span class="h-day">
+              Dimanche
+              <small>Brunch disponible</small>
+            </span>
+            <span class="h-time">10h30–20h30</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="access-col reveal-block">
+        <span class="section-label">Nous trouver</span>
+        <h2 class="section-title">Accès &amp; contact</h2>
+        <div class="contact-items">
+          <a href="https://maps.google.com/?q=Magnolia+29+route+de+Corbeil+91700+Sainte-Geneviève-des-Bois" target="_blank" rel="noopener" class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <strong>29 route de Corbeil</strong>
+              <span>91700 Sainte-Geneviève-des-Bois</span>
+            </div>
+          </a>
+          <a href="tel:0175306108" class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 .11h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <strong>01 75 30 61 08</strong>
+              <span>Appeler pour réserver</span>
+            </div>
+          </a>
+          <a href="https://instagram.com/restaurantmagnolia91" target="_blank" rel="noopener" class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </div>
+            <div>
+              <strong>@restaurantmagnolia91</strong>
+              <span>Suivez-nous sur Instagram</span>
+            </div>
+          </a>
+        </div>
+        <div class="map-embed">
+          <iframe
+            src="https://maps.google.com/maps?q=48.6477613,2.3360647&z=16&output=embed"
+            width="100%"
+            height="280"
+            style="border:0;border-radius:8px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Localisation du restaurant Magnolia">
+          </iframe>
+        </div>
+        <div class="cta-row">
+          <a href="tel:0175306108" class="btn btn-dark">Appeler pour réserver</a>
+          <a href="https://maps.google.com/?q=Magnolia+29+route+de+Corbeil+91700+Sainte-Geneviève-des-Bois" target="_blank" rel="noopener" class="btn btn-outline-dark">Itinéraire</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ░░░ FOOTER ░░░ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <h3 class="footer-logo">Magnolia</h3>
+        <p>Restaurant méditerranéen &amp; turc<br>à Sainte-Geneviève-des-Bois</p>
+        <a href="https://instagram.com/restaurantmagnolia91" target="_blank" rel="noopener" class="footer-insta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
+          @restaurantmagnolia91
+        </a>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#about">À propos</a></li>
+          <li><a href="#menu">La carte</a></li>
+          <li><a href="#gallery">Galerie</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:0175306108">01 75 30 61 08</a></li>
+          <li>29 route de Corbeil</li>
+          <li>91700 Sainte-Geneviève-des-Bois</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Horaires</h4>
+        <ul>
+          <li>Lundi : Fermé</li>
+          <li>Mar–Jeu : 11h30–15h · 18h–21h30</li>
+          <li>Ven–Sam : 11h30–15h · 18h–23h30</li>
+          <li>Dimanche : 10h30–20h30</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Restaurant Magnolia — Tous droits réservés</p>
+      <p class="footer-disclaimer">Site maquette — informations à valider avec le restaurant avant mise en ligne.</p>
+    </div>
+  </footer>
+
+  <!-- ░░░ FAB MOBILE ░░░ -->
+  <a href="tel:0175306108" class="fab" aria-label="Appeler le restaurant">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 .11h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
