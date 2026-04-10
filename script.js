@@ -32,10 +32,10 @@ function initLoader() {
    HERO — GSAP + CHAR SPLIT
 ═════════════════════════════ */
 function splitChars(el) {
-  const original = el.innerHTML;
-  // Preserve italic span
   if (el.children.length) return;
   const text = el.textContent;
+  // Wrap in a no-wrap container so characters never break across lines
+  el.style.whiteSpace = 'nowrap';
   el.innerHTML = text.split('').map(ch =>
     `<span class="char" style="display:inline-block;will-change:transform,opacity">${ch === ' ' ? '&nbsp;' : ch}</span>`
   ).join('');
