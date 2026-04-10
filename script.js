@@ -371,11 +371,12 @@ function initMenuTabs() {
 
   function moveIndicator(tab) {
     if (!indicator) return;
-    const tabsWrap = document.getElementById('menu-tabs');
-    if (!tabsWrap) return;
-    const tr = tabsWrap.getBoundingClientRect();
+    const tabsEl = document.getElementById('menu-tabs');
+    if (!tabsEl) return;
+    const tr = tabsEl.getBoundingClientRect();
     const br = tab.getBoundingClientRect();
-    indicator.style.left  = (br.left - tr.left + tabsWrap.scrollLeft) + 'px';
+    // both are now in the same parent → offset is correct
+    indicator.style.left  = (br.left - tr.left) + 'px';
     indicator.style.width = br.width + 'px';
   }
 

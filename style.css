@@ -495,6 +495,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 /* Tab strip */
 .menu-tabs-wrap { position: relative; margin-bottom: 48px; }
 .menu-tabs {
+  position: relative;
   display: flex; align-items: center; justify-content: center; gap: 4px; flex-wrap: wrap;
   border: 1px solid rgba(247,242,233,0.09); border-radius: 100px; padding: 6px;
   max-width: 700px; margin: 0 auto; background: rgba(247,242,233,0.04);
