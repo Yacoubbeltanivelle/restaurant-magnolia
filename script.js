@@ -375,8 +375,8 @@ function initMenuTabs() {
     if (!tabsEl) return;
     const tr = tabsEl.getBoundingClientRect();
     const br = tab.getBoundingClientRect();
-    // both are now in the same parent → offset is correct
-    indicator.style.left  = (br.left - tr.left) + 'px';
+    // account for horizontal scroll inside the tabs container
+    indicator.style.left  = (br.left - tr.left + tabsEl.scrollLeft) + 'px';
     indicator.style.width = br.width + 'px';
   }
 

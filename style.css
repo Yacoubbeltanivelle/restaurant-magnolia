@@ -504,31 +504,37 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .menu-tabs-wrap { position: relative; margin-bottom: 48px; }
 .menu-tabs {
   position: relative;
-  display: flex; align-items: center; justify-content: center; gap: 4px; flex-wrap: wrap;
-  border: 1px solid rgba(247,242,233,0.09); border-radius: 100px; padding: 6px;
-  max-width: 700px; margin: 0 auto; background: rgba(247,242,233,0.04);
+  display: flex; align-items: center; justify-content: center;
+  gap: 2px; flex-wrap: nowrap;           /* single row always */
+  border: 1px solid rgba(247,242,233,0.09); border-radius: 100px; padding: 5px;
+  max-width: 860px; margin: 0 auto; background: rgba(247,242,233,0.04);
+  overflow-x: auto; overflow-y: visible; /* scroll on small screens */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
+.menu-tabs::-webkit-scrollbar { display: none; }
+
 .tab {
-  padding: 10px 22px; border-radius: 100px;
-  font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.03em;
+  padding: 10px 18px; border-radius: 100px;
+  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.03em;
   color: rgba(247,242,233,0.45);
   transition: all 0.35s var(--ease); white-space: nowrap;
-  display: flex; align-items: center; gap: 6px;
-  position: relative; z-index: 1;
+  display: flex; align-items: center; gap: 5px;
+  position: relative; z-index: 1; flex-shrink: 0;
 }
 .tab.active { color: var(--brown); }
 .tab:hover:not(.active) { color: var(--cream); }
 .tab-badge {
-  font-size: 0.62rem; background: var(--terracotta); color: #fff;
-  padding: 2px 6px; border-radius: 100px; letter-spacing: 0.04em;
+  font-size: 0.58rem; background: var(--terracotta); color: #fff;
+  padding: 2px 5px; border-radius: 100px; letter-spacing: 0.04em;
 }
 
 /* Sliding indicator pill */
 .tab-indicator {
-  position: absolute; height: 40px;
+  position: absolute; height: 38px;
   background: var(--gold); border-radius: 100px;
   transition: left 0.4s var(--ease-out), width 0.4s var(--ease-out);
-  top: 6px; pointer-events: none; z-index: 0;
+  top: 5px; pointer-events: none; z-index: 0;
 }
 
 /* Panels */
@@ -787,9 +793,7 @@ footer { background: var(--brown); padding: 80px 40px 0; }
   .highlights { padding: 60px 24px; }
   #contact { padding: 80px 24px; }
   footer { padding: 60px 24px 0; }
-  .menu-tabs { justify-content: flex-start; overflow-x: auto; border-radius: 12px; flex-wrap: nowrap; }
-  .menu-tabs::-webkit-scrollbar { display: none; }
-  .tab { flex-shrink: 0; }
+  .menu-tabs { justify-content: flex-start; }
   .tab-indicator { display: none; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; }
   .gallery-item.wide { grid-column: span 2; }
